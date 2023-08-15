@@ -5,7 +5,7 @@ public class Main {
         Calculator calc = Calculator.instance.get();
         int a = calc.plus.apply(1, 2);
         int b = calc.minus.apply(1, 1);
-        // При делении на 0 выдаст ошибку
+        // При делении на 0 Делить на 0 нельзя
         int c = calc.divide.apply(a, b);
         calc.println.accept(c);
     }
