@@ -13,7 +13,7 @@ public class Work {
     public void start() {
         for (int i = 0; i < 100; i++) {
             if (i == 33){
-                this.error.onError("Task " + i + " is failed");
+                this.error.onError("Task " + i + " Это печально");
                 continue;
             }
             this.cb.onDone("Task " + i + " is done");
