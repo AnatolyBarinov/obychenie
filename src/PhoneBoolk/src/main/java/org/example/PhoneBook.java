@@ -10,14 +10,14 @@ public class PhoneBook {
     public PhoneBook() {
         contacts = new ArrayList<>();
     }
-
+    //Add method stub for add
     public int add(String name, String number) {
         if (!contactExists(name)) {
             contacts.add(new Contact(name, number));
         }
         return contacts.size();
     }
-
+//
     public String findByNumber(String number) {
         for (Contact contact : contacts) {
             if (contact.getNumber().equals(number)) {
