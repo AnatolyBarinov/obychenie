@@ -10,6 +10,7 @@ public class PhoneBook {
     public PhoneBook() {
         contacts = new ArrayList<>();
     }
+
     //Add method stub for add
     public int add(String name, String number) {
         if (!contactExists(name)) {
@@ -17,7 +18,7 @@ public class PhoneBook {
         }
         return contacts.size();
     }
-//
+
     public String findByNumber(String number) {
         for (Contact contact : contacts) {
             if (contact.getNumber().equals(number)) {
@@ -56,7 +57,7 @@ public class PhoneBook {
         return false;
     }
 
-    private class Contact {
+    private static class Contact {
         private String name;
         private String number;
 
