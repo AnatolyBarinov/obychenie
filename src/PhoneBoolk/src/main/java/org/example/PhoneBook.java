@@ -29,11 +29,7 @@ public class PhoneBook {
     }
 
     public String findByName(String name) {
-        for (Contact contact : contacts) {
-            if (contact.getName().equalsIgnoreCase(name)) {
-                return contact.getNumber();
-            }
-        }
+
         return null;
     }
 
