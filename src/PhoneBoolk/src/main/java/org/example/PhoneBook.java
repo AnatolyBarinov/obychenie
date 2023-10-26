@@ -20,7 +20,12 @@ public class PhoneBook {
     }
 
     public String findByNumber(String number) {
-        return null; // method stub
+        for (Contact contact : contacts) {
+            if (contact.getNumber().equals(number)) {
+                return contact.getName();
+            }
+        }
+        return null;
     }
 
     public String findByName(String name) {
