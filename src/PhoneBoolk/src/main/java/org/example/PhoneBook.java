@@ -13,7 +13,10 @@ public class PhoneBook {
 
 
     public int add(String name, String number) {
-        return 0;
+        if (!contactExists(name)) {
+            contacts.add(new Contact(name, number));
+        }
+        return contacts.size();
     }
 
     public String findByNumber(String number) {
