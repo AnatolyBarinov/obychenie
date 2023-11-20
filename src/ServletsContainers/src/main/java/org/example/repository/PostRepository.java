@@ -11,8 +11,8 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicLong;
 
 public class PostRepository {
-  private AtomicLong idCounter = new AtomicLong(0);
-  private Map<Long, Post> posts = new ConcurrentHashMap<>();
+  private final AtomicLong idCounter = new AtomicLong(0);
+  private final Map<Long, Post> posts = new ConcurrentHashMap<>();
 
   public List<Post> all() {
     return new ArrayList<>(posts.values());

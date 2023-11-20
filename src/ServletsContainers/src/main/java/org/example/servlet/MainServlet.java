@@ -9,6 +9,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public class MainServlet extends HttpServlet {
+  private static final String PATH_POSTS = "/api/posts";
+  private static final String PATH_POSTS_ID = "/api/posts/\\d+";
+  private static final String METHOD_GET = "GET";
+  private static final String METHOD_POST = "POST";
+  private static final String METHOD_DELETE = "DELETE";
+
   private PostController controller;
 
   @Override
@@ -20,31 +26,29 @@ public class MainServlet extends HttpServlet {
 
   @Override
   protected void service(HttpServletRequest req, HttpServletResponse resp) {
-    // Если деплоились в root context, то достаточно этого
     try {
       final var path = req.getRequestURI();
       final var method = req.getMethod();
-      // Primitive routing
-      if (method.equals("GET") && path.equals("/api/posts")) {
+
+      if (method.equals(METHOD_GET) && path.equals(PATH_POSTS)) {
         controller.all(resp);
         return;
       }
-      if (method.equals("GET") && path.matches("/api/posts/\\d+")) {
-        // Easy way
+      if (method.equals(METHOD_GET) && path.matches(PATH_POSTS_ID)) {
         final var id = Long.parseLong(path.substring(path.lastIndexOf("/")));
         controller.getById(id, resp);
         return;
       }
-      if (method.equals("POST") && path.equals("/api/posts")) {
+      if (method.equals(METHOD_POST) && path.equals(PATH_POSTS)) {
         controller.save(req.getReader(), resp);
         return;
       }
-      if (method.equals("DELETE") && path.matches("/api/posts/\\d+")) {
-        // Easy way
+      if (method.equals(METHOD_DELETE) && path.matches(PATH_POSTS_ID)) {
         final var id = Long.parseLong(path.substring(path.lastIndexOf("/")));
         controller.removeById(id, resp);
         return;
       }
+
       resp.setStatus(HttpServletResponse.SC_NOT_FOUND);
     } catch (Exception e) {
       e.printStackTrace();
